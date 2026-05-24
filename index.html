@@ -8,67 +8,77 @@
 </head>
 <body>
 
-  <section id="homePage" class="page active">
-    <header>
-      <h1>Fidget Value</h1>
-      <p>Register, value, and track your fidgets.</p>
-    </header>
+<section id="homePage" class="page active">
+  <header>
+    <h1>Fidget Value</h1>
+    <p>Register, value, trade, and track your fidgets.</p>
+  </header>
 
-    <main>
-      <div class="category">
-        <h2>New Fidgets</h2>
-        <div id="newFidgets" class="fidgetList"></div>
-      </div>
+  <main>
+    <div class="category">
+      <h2>New Fidgets</h2>
+      <div id="newFidgets" class="fidgetList"></div>
+    </div>
 
-      <div class="category">
-        <h2>Trending Fidgets</h2>
-        <div class="emptyBox">Popular fidgets will appear here soon.</div>
-      </div>
+    <div class="category">
+      <h2>Trending Fidgets</h2>
+      <div id="trendingFidgets" class="fidgetList"></div>
+    </div>
 
-      <div class="category">
-        <h2>High Value Fidgets</h2>
-        <div class="emptyBox">Expensive or rare fidgets will appear here.</div>
-      </div>
-    </main>
+    <div class="category">
+      <h2>Trading Board</h2>
 
-    <button id="plusBtn" class="plusBtn">+</button>
-  </section>
+      <h3>Your Side</h3>
+      <div id="yourSide" class="fidgetList"></div>
 
-  <section id="uploadPage" class="page">
-    <header>
-      <button id="backBtn" class="backBtn">← Back</button>
-      <h1>Upload Fidget</h1>
-      <p>Add a photo, name, and notes.</p>
-    </header>
+      <h3>Their Side</h3>
+      <div id="theirSide" class="fidgetList"></div>
 
-    <main>
-      <form id="fidgetForm">
-        <label>Take or upload picture</label>
-        <input id="photoInput" type="file" accept="image/*" capture="environment" required />
+      <button class="uploadBtn" onclick="clearTrade()">Clear Trade Board</button>
+    </div>
+  </main>
 
-        <label>Fidget name</label>
-        <input id="nameInput" type="text" placeholder="Caro's green mochi turtle" required />
+  <button id="plusBtn" class="plusBtn">+</button>
+</section>
 
-        <label>Notes</label>
-        <textarea id="noteInput" placeholder="Color, size, where you bought it, condition..."></textarea>
+<section id="uploadPage" class="page">
+  <header>
+    <button id="backBtn" class="backBtn">← Back</button>
+    <h1>Upload Fidget</h1>
+    <p>Add a photo, name, value, and notes.</p>
+  </header>
 
-        <label>Status</label>
-        <select id="statusInput">
-          <option>Brand New</option>
-          <option>Unused</option>
-          <option>Used</option>
-          <option>Traded</option>
-        </select>
+  <main>
+    <form id="fidgetForm">
+      <label>Take or upload picture</label>
+      <input id="photoInput" type="file" accept="image/*" capture="environment" required />
 
-        <button type="submit" class="uploadBtn">Save Fidget</button>
-      </form>
+      <label>Fidget name</label>
+      <input id="nameInput" type="text" placeholder="Caro's green mochi turtle" required />
 
-      <div id="loadingBox" class="loadingBox hidden">
-        Uploading to the website...
-      </div>
-    </main>
-  </section>
+      <label>Value</label>
+      <input id="valueInput" type="number" step="0.1" min="0" max="3" placeholder="Example: 1.5" required />
 
-  <script src="script.js"></script>
+      <label>Notes</label>
+      <textarea id="noteInput" placeholder="Color, size, where you bought it, condition..."></textarea>
+
+      <label>Status</label>
+      <select id="statusInput">
+        <option>Brand New</option>
+        <option>Unused</option>
+        <option>Used</option>
+        <option>Traded</option>
+      </select>
+
+      <button type="submit" class="uploadBtn">Save Fidget</button>
+    </form>
+
+    <div id="loadingBox" class="loadingBox hidden">
+      Uploading to the website...
+    </div>
+  </main>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>
