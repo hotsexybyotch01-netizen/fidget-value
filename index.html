@@ -2,77 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fidget Values</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fidget Value</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Fidget Values</h1>
-    <p class="subtitle">Search squishies, check values, and test trades ✨</p>
-    <div class="topbar">
-      <input id="search" placeholder="Search fidget, like Glitter Dumpling..." />
-      <select id="filter">
-        <option value="All">All rarities</option>
-        <option value="Legendary">Legendary</option>
-        <option value="Ultra Rare">Ultra Rare</option>
-        <option value="Rare">Rare</option>
-        <option value="Uncommon">Uncommon</option>
-        <option value="Common">Common</option>
-      </select>
-      <button onclick="showBoard()">Trading Board</button>
-    </div>
+    <h1>Fidget Value</h1>
+    <p>Register, value, and track your fidgets.</p>
   </header>
-  <main>
-    <section id="homePage">
-      <div class="stats">
-        <span class="pill">Legendary: 1.5–3</span>
-        <span class="pill">Ultra Rare: 0.8–1</span>
-        <span class="pill">Rare: 0.4–0.7</span>
-        <span class="pill">Uncommon: 0.1–0.3</span>
-        <span class="pill">Common: 0–0.09</span>
-      </div>
-      <div id="itemsGrid" class="grid"></div>
+
+  <main id="homePage">
+    <section class="video-section">
+      <h2>Classic Videos</h2>
+      <div class="video-box">Add your TikTok/video here</div>
+      <div class="video-box">Add your TikTok/video here</div>
     </section>
-    <section id="boardPage" class="hidden">
-      <button class="back" onclick="showHome()">
-        ← Back to Values
-      </button>
-      <div class="result" id="tradeResult">
-        Add items to check the trade
-      </div>
-      <div class="board">
-        <div class="side">
-          <h2>Your Side</h2>
-          <div class="trade-controls">
-            <select id="yourSelect"></select>
-            <button onclick="addTradeItem('your')">
-              + Add to Your Side
-            </button>
-          </div>
-          <div id="yourList"></div>
-          <div class="total">
-            Total: <span id="yourTotal">0</span>
-          </div>
-        </div>
-        <div class="side">
-          <h2>Their Side</h2>
-          <div class="trade-controls">
-            <select id="theirSelect"></select>
-            <button onclick="addTradeItem('their')">
-              + Add to Their Side
-            </button>
-          </div>
-          <div id="theirList"></div>
-          <div class="total">
-            Total: <span id="theirTotal">0</span>
-          </div>
-        </div>
-      </div>
+
+    <section>
+      <h2>Registered Fidgets</h2>
+      <div id="fidgetList" class="fidget-grid"></div>
     </section>
   </main>
+
+  <main id="uploadPage" class="hidden">
+    <button class="back-btn" onclick="showHome()">← Back</button>
+    <h2>Upload Fidget</h2>
+
+    <form id="fidgetForm">
+      <input id="name" placeholder="Name: Caro's green mochi turtle" required />
+      <textarea id="description" placeholder="Description"></textarea>
+      <input id="color" placeholder="Color" />
+      <input id="size" placeholder="Estimated size: small, medium, jumbo" />
+
+      <select id="rarity" required>
+        <option value="">Choose rarity</option>
+        <option>Common</option>
+        <option>Uncommon</option>
+        <option>Rare</option>
+        <option>Ultra Rare</option>
+        <option>Legendary</option>
+      </select>
+
+      <select id="status" required>
+        <option value="">Choose status</option>
+        <option>Brand New</option>
+        <option>Unused</option>
+        <option>Used</option>
+        <option>Damaged</option>
+      </select>
+
+      <input id="image" type="file" accept="image/*" required />
+
+      <button type="submit">Upload</button>
+    </form>
+
+    <div id="uploadMessage" class="upload-message hidden">
+      Uploading to the website...
+    </div>
+  </main>
+
+  <button class="plus-btn" onclick="showUpload()">+</button>
+
   <script src="script.js"></script>
 </body>
 </html>
