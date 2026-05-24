@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fidget Values</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Fidget Values</h1>
+    <p class="subtitle">Search squishies, check values, and test trades ✨</p>
+    <div class="topbar">
+      <input id="search" placeholder="Search fidget, like Glitter Dumpling..." />
+      <select id="filter">
+        <option value="All">All rarities</option>
+        <option value="Legendary">Legendary</option>
+        <option value="Ultra Rare">Ultra Rare</option>
+        <option value="Rare">Rare</option>
+        <option value="Uncommon">Uncommon</option>
+        <option value="Common">Common</option>
+      </select>
+      <button onclick="showBoard()">Trading Board</button>
+    </div>
+  </header>
+  <main>
+    <section id="homePage">
+      <div class="stats">
+        <span class="pill">Legendary: 1.5–3</span>
+        <span class="pill">Ultra Rare: 0.8–1</span>
+        <span class="pill">Rare: 0.4–0.7</span>
+        <span class="pill">Uncommon: 0.1–0.3</span>
+        <span class="pill">Common: 0–0.09</span>
+      </div>
+      <div id="itemsGrid" class="grid"></div>
+    </section>
+    <section id="boardPage" class="hidden">
+      <button class="back" onclick="showHome()">
+        ← Back to Values
+      </button>
+      <div class="result" id="tradeResult">
+        Add items to check the trade
+      </div>
+      <div class="board">
+        <div class="side">
+          <h2>Your Side</h2>
+          <div class="trade-controls">
+            <select id="yourSelect"></select>
+            <button onclick="addTradeItem('your')">
+              + Add to Your Side
+            </button>
+          </div>
+          <div id="yourList"></div>
+          <div class="total">
+            Total: <span id="yourTotal">0</span>
+          </div>
+        </div>
+        <div class="side">
+          <h2>Their Side</h2>
+          <div class="trade-controls">
+            <select id="theirSelect"></select>
+            <button onclick="addTradeItem('their')">
+              + Add to Their Side
+            </button>
+          </div>
+          <div id="theirList"></div>
+          <div class="total">
+            Total: <span id="theirTotal">0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
