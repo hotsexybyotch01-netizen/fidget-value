@@ -2,83 +2,103 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fidget Value</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fidget Values</title>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<section id="homePage" class="page active">
   <header>
-    <h1>Fidget Value</h1>
-    <p>Register, value, trade, and track your fidgets.</p>
-  </header>
+    <h1>Fidget Values</h1>
+    <p class="subtitle">Search squishies, check values, and test trades ✨</p>
 
-  <main>
-    <div class="category">
-      <h2>New Fidgets</h2>
-      <div id="newFidgets" class="fidgetList"></div>
-    </div>
+    <div class="topbar">
+      <input id="search" placeholder="Search fidget, like Glitter Dumpling..." />
 
-    <div class="category">
-      <h2>Trending Fidgets</h2>
-      <div id="trendingFidgets" class="fidgetList"></div>
-    </div>
-
-    <div class="category">
-      <h2>Trading Board</h2>
-
-      <h3>Your Side</h3>
-      <div id="yourSide" class="fidgetList"></div>
-
-      <h3>Their Side</h3>
-      <div id="theirSide" class="fidgetList"></div>
-
-      <button class="uploadBtn" onclick="clearTrade()">Clear Trade Board</button>
-    </div>
-  </main>
-
-  <button id="plusBtn" class="plusBtn">+</button>
-</section>
-
-<section id="uploadPage" class="page">
-  <header>
-    <button id="backBtn" class="backBtn">← Back</button>
-    <h1>Upload Fidget</h1>
-    <p>Add a photo, name, value, and notes.</p>
-  </header>
-
-  <main>
-    <form id="fidgetForm">
-      <label>Take or upload picture</label>
-      <input id="photoInput" type="file" accept="image/*" capture="environment" required />
-
-      <label>Fidget name</label>
-      <input id="nameInput" type="text" placeholder="Caro's green mochi turtle" required />
-
-      <label>Value</label>
-      <input id="valueInput" type="number" step="0.1" min="0" max="3" placeholder="Example: 1.5" required />
-
-      <label>Notes</label>
-      <textarea id="noteInput" placeholder="Color, size, where you bought it, condition..."></textarea>
-
-      <label>Status</label>
-      <select id="statusInput">
-        <option>Brand New</option>
-        <option>Unused</option>
-        <option>Used</option>
-        <option>Traded</option>
+      <select id="filter">
+        <option value="All">All rarities</option>
+        <option value="Legendary">Legendary</option>
+        <option value="Ultra Rare">Ultra Rare</option>
+        <option value="Rare">Rare</option>
+        <option value="Uncommon">Uncommon</option>
+        <option value="Common">Common</option>
       </select>
 
-      <button type="submit" class="uploadBtn">Save Fidget</button>
-    </form>
-
-    <div id="loadingBox" class="loadingBox hidden">
-      Uploading to the website...
+      <button onclick="showBoard()">Trading Board</button>
     </div>
-  </main>
-</section>
+  </header>
 
-<script src="script.js"></script>
+  <main>
+
+    <section id="homePage">
+      <div class="stats">
+        <span class="pill">Legendary: 1.5–3</span>
+        <span class="pill">Ultra Rare: 0.8–1</span>
+        <span class="pill">Rare: 0.4–0.7</span>
+        <span class="pill">Uncommon: 0.1–0.3</span>
+        <span class="pill">Common: 0–0.09</span>
+      </div>
+
+      <div id="itemsGrid" class="grid"></div>
+    </section>
+
+
+    <section id="boardPage" class="hidden">
+
+      <button class="back" onclick="showHome()">
+        ← Back to Values
+      </button>
+
+      <div class="result" id="tradeResult">
+        Add items to check the trade
+      </div>
+
+      <div class="board">
+
+        <div class="side">
+          <h2>Your Side</h2>
+
+          <div class="trade-controls">
+            <select id="yourSelect"></select>
+            <button onclick="addTradeItem('your')">
+              + Add to Your Side
+            </button>
+          </div>
+
+          <div id="yourList"></div>
+
+          <div class="total">
+            Total: <span id="yourTotal">0</span>
+          </div>
+        </div>
+
+
+        <div class="side">
+          <h2>Their Side</h2>
+
+          <div class="trade-controls">
+            <select id="theirSelect"></select>
+            <button onclick="addTradeItem('their')">
+              + Add to Their Side
+            </button>
+          </div>
+
+          <div id="theirList"></div>
+
+          <div class="total">
+            Total: <span id="theirTotal">0</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
